@@ -10,10 +10,17 @@
         :iconTooltip="StdIconStyle.search"
       >
         <template v-slot:tooltipcontent>
-          <div class="flex-fAstart-fJbetween" v-for="e of currentElements" :key="e.codei">
-            <StdToggle :check.sync="e.checked" @click="elementChanged" checkedString="oui" uncheckedString="non" :disable="!e.checkAble" />
-            <div>{{ e.presentation() }}</div>
-          </div>
+          <span v-if="paramType === 'KeyValueCheckableModel'">
+            <div class="flex-fAstart-fJbetween" v-for="e of currentElements" :key="e.codei">
+              <StdToggle :check.sync="e.checked" @click="elementChanged" checkedString="oui" uncheckedString="non" :disable="!e.checkAble" />
+              <div>{{ e.presentation() }}</div>
+            </div>
+          </span>
+          <span v-if="paramType === 'date'">
+            <div class="flex-fAstart-fJbetween" v-for="(e, index) of currentElements" :key="`${index}${e}`">
+              <date-picker v-model="currentElements[index]" format="DD-MM-YYYY"></date-picker>
+            </div>
+          </span>
         </template>
       </StdTooltip>
     </div>
@@ -34,7 +41,15 @@ import { SearchService } from '@/api/SearchHelper'
   }
 })
 export default class StfFilterComponent extends Vue {
-  @PropSync('elements', { type: [] }) paramElements!: Array<KeyValueCheckableModel>
+  @PropSync('elements', { type: [] }) paramElements!: Array<any>
+  @PropSync('type', {
+    type: String,
+    default: () => {
+      return 'KeyValueCheckableModel'
+    }
+  })
+  paramType!: string
+
   /*@PropSync('rows', { type: [] }) paramRows!: Array<any>
   @PropSync('rowKey', { type: String }) paramRowKey!: string*/
 

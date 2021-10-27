@@ -1,16 +1,10 @@
 import SecurePojo from './SecurePojo'
 
-export enum TypeOfKeyValueCheckableModel {
-  string,
-  date,
-  na
-}
-
 export default class KeyValueCheckableModel extends SecurePojo {
   public _id: string = ''
   private _codei: string = ''
   private _libelle: string = ''
-  private _type: TypeOfKeyValueCheckableModel = TypeOfKeyValueCheckableModel.na
+  private _type: string = ''
   private _comment: string = ''
 
   private _checkAble: boolean = true
@@ -39,10 +33,10 @@ export default class KeyValueCheckableModel extends SecurePojo {
     this._libelle = libelle
   }
 
-  public get type(): TypeOfKeyValueCheckableModel {
+  public get type(): string {
     return this._type
   }
-  public set type(type: TypeOfKeyValueCheckableModel) {
+  public set type(type: string) {
     this._type = type
   }
 

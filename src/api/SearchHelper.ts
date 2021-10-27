@@ -120,7 +120,7 @@ export default class SearchHelper {
   public spliceWithValidator(coll: [], valid: (value: Object) => boolean) {
     for (let i = 0; i < coll.length; i++) {
       let currentObject = coll[i]
-      if (valid(currentObject) == false) {
+      if (valid(currentObject) === false) {
         coll.splice(i, 1)
       }
     }

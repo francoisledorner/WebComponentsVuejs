@@ -10,8 +10,8 @@
       </div>
     </div>
     <div v-if="type === 'date'">
-      <div v-if="currentEditable === false">format date {{ currentElementValue }}</div>
-      <div v-else>date picker</div>
+      <div v-if="currentEditable === false">{{ currentElementValue | datefilter }}</div>
+      <div v-else><date-picker v-model="currentElementValue" format="DD-MM-YYYY"></date-picker></div>
     </div>
     <div v-if="type === 'KeyValueCheckableModel'">
       <div v-if="currentEditable === false">
@@ -32,9 +32,7 @@ import { Vue, Prop, Emit, Watch, Component, PropSync } from 'vue-property-decora
 import KeyValueCheckableModel from '@/api/KeyValueCheckableModel'
 
 @Component({
-  components: {
-    //
-  }
+  components: {}
 })
 export default class StfEditableField extends Vue {
   @PropSync('element', { type: Object }) paramElement!: any

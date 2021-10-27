@@ -12,13 +12,15 @@
     "ts-declaration-out": "tsc --target ES2016  --declaration src/api/ItemWithChildrenDTO.ts --declarationDir outtypes"
   },
   "dependencies": {
+    "@types/vue2-datepicker": "^3.3.1",
     "core-js": "^3.3.2",
     "date-fns": "^2.14.0",
     "reflect-metadata": "^0.1.13",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.14",
     "vue-class-component": "^7.2.6",
-    "vue-property-decorator": "^9.1.2"
+    "vue-property-decorator": "^9.1.2",
+    "vue2-datepicker": "^3.10.2"
   },
   "files": [
     "dist/*",
