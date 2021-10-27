@@ -1,0 +1,49 @@
+.std-flex-container {
+    padding: 0;
+    margin: 0;
+    
+    display: flex;
+  }
+  
+  .std-flex-start { 
+    -webkit-align-items: flex-start;
+    align-items: flex-start; 
+  }
+  
+  .std-flex-end { 
+    -webkit-align-items: flex-end; 
+    align-items: flex-end; 
+  }
+  
+  .center { 
+    -webkit-align-items: center; 
+    align-items: center; 
+  }  
+  
+  .baseline { 
+    -webkit-align-items: baseline; 
+    align-items: baseline; 
+  }
+  
+  .stretch { 
+    -webkit-align-items: stretch; 
+    align-items: stretch; 
+  }  
+  
+  .std-flex-item {
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+  }
+
+  .push-right {
+    margin-left: auto;
+    margin-right: 5px;
+  }
+
+  .heigth-bg {
+    height: 40px;
+    background: whitesmoke;
+  }
+
+  

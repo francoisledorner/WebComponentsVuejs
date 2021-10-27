@@ -1,0 +1,99 @@
+@import './std-table';
+
+.t-table {
+  tbody td {
+    line-height: 1;
+    height: auto;
+    vertical-align: middle;
+    cursor: default;
+  }
+  tbody tr td:first-child {
+    overflow-wrap: break-word;
+    word-break: break-all;
+    cursor: pointer;
+  }
+
+  tr td:first-child div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  tr td:first-child div i:nth-child(2n) {
+    white-space: nowrap;
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+    --border: 1px solid $border-color;
+  }
+
+  tr td:first-child div:hover i:nth-child(2n) {
+    overflow: visible;
+  }
+
+  tr {
+    td {
+      color: $grey-darken-3;
+      border: 0.1rem solid $grey-lighten-1;
+    }
+
+    &.marker-level-0 td {
+      color: $grey-lighten-1;
+    }
+    &.marker-level-1 td {
+      color: $grey-lighten-0;
+    }
+
+    &:hover:not(.v-datatable__expand-row) {
+      background-color: transparent;
+    }
+    &.marker-level-0:hover {
+      background-color: $color-lighten-3;
+    }
+    &.marker-level-1:hover {
+      background-color: $color-lighten-3;
+    }
+
+    &:hover th {
+    }
+
+    &:hover td {
+      background-color: $grey-lighten-3-transparent;
+    }
+
+    &.active th {
+      background-color: $color-lighten-1;
+    }
+
+    &.active td {
+      background-color: $color-lighten-1-transparent;
+    }
+
+    &.activecell {
+      background-color: $color-lighten-1-transparent-selected;
+    }
+  }
+
+  .marker-level-0 td {
+    background: $color-lighten-6;
+    color: $color-lighten-0;
+  }
+  .marker-level-1 td {
+    background: $color-lighten-5;
+    color: $color-lighten-0;
+  }
+  .marker-level-2 td {
+    background: $color-lighten-4;
+    color: $color-lighten-0;
+  }
+  .marker-level-0 .theme--light.v-icon,
+  .marker-level-1 .theme--light.v-icon,
+  .marker-level-2 .theme--light.v-icon {
+    color: $color-lighten-0;
+  }
+  .marker-odd .theme--light.v-icon,
+  .marker-even .theme--light.v-icon {
+    color: $color-lighten-7;
+    flex: 0 0 24px;
+  }
+}

@@ -1,0 +1,54 @@
+.tooltip {
+  display: inline-block;
+  cursor: pointer;
+}
+
+$--tooltiptext-background: #ececec;
+
+.hideToolTipClass {
+  transition: opacity 1s ease-out;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+.showToolTipClass {
+  opacity: 1;
+  height: auto;
+  transition: opacity 1s ease-out;
+}
+
+.tooltiptextAbsolute {
+  position: absolute;
+}
+
+.tooltiptext {
+  background-color: $--tooltiptext-background;
+
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  //z-index: 1;
+  top: 10px;
+  left: 10px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.tooltipcontent {
+  width: 100%;
+  text-justify: inter-word;
+  background-color: mix(#ffffff, $--tooltiptext-background, 40%);
+
+  overflow: auto;
+}
+
+.tooltipbotton {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}

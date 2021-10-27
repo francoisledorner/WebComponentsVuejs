@@ -1,0 +1,85 @@
+$header-color: $color-lighten-7;
+$border-color: $grey-lighten-1;
+$bg-color: $color-lighten-1;
+$hover-color: $grey-lighten-3-transparent;
+$padding-th: 0.2rem;
+$padding-td: 0rem;
+
+.std-table-container {
+    max-height: calc(100% - 5px);
+    overflow: auto;
+    //height: 150px
+}
+
+.std-table {
+  border-collapse: collapse;
+  width: 100%;
+
+  th {
+    border: 1px solid $border-color;
+    text-align: center;
+    padding: $padding-th;
+    color: white;
+    background-color: $header-color;
+    font-weight: 700;
+  }
+
+  td {
+    border: 0.1rem solid $border-color;
+    padding: $padding-td;
+    font-weight: 500;
+    color: $grey-darken-3;
+  }
+
+  tr td {
+    cursor: pointer;
+  }
+
+  thead tr th {
+    word-wrap: break-word;
+    white-space: initial;
+  }
+
+  tr:nth-child(odd) {
+    background-color: $bg-color;
+  }
+
+  tr {
+    &:hover {
+      background-color: $hover-color;
+    }
+  }
+
+  tbody {
+    background: linear-gradient(
+      -45deg,
+      $grey-lighten-2 2.5%,
+      $grey-lighten-0 2.5%,
+      $grey-lighten-0 47.5%,
+      $grey-lighten-2 47.5%,
+      $grey-lighten-2 52.5%,
+      $grey-lighten-0 52.5%,
+      $grey-lighten-0 97.5%,
+      $grey-lighten-2 97.5%
+    );
+    background-position: 50px 50px;
+    background-size: 8px 8px;
+  }
+
+  .whenEmptyDatav {
+    td {
+      background-color: rgba(221, 221, 221, 0.2) !important;
+    }
+
+    tr:nth-child(odd) {
+      background-color: rgba(221, 221, 221, 0.2) !important;
+    }
+  }
+
+  .txtcenter {
+    text-align: center;
+  }
+  .txtright {
+    text-align: right;
+  }
+}

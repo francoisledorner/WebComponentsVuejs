@@ -1,0 +1,15 @@
+.navigation-button {
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+    vertical-align: middle;
+    cursor:pointer;
+  }
+  .navigation-button:hover {
+    background: $grey-lighten-4;
+    border-radius: 50%;
+  }
+  

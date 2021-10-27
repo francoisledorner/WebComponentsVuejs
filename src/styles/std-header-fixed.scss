@@ -1,0 +1,35 @@
+
+@mixin header-fixed($ht, $hh) {
+  table,
+  tbody {
+    display: block;
+    overflow: auto;
+  }
+  table {
+    height: $ht;
+    overflow-y: hidden !important;
+  }
+  tbody {
+    height: calc( #{$ht} - #{$hh});
+  }
+
+  thead,
+  tbody tr {
+    display: table;
+    width: 99%;
+    table-layout: fixed;
+  }
+  thead {
+    width: calc(98%);
+  }
+  table {
+    width: 100%;
+  }
+
+  thead {
+    width: calc(98%);
+  }
+  table {
+    width: 100%;
+  }
+}
