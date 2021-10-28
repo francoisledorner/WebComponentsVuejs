@@ -7,8 +7,11 @@ or
 
 > To use this components in your project run 
 `yarn add webcomponents-dl@0.1.42`
+![](doc/use-as-component.png)
 
 # Table with header 
+## Exemple with simple model
+![](starwarsmodel.png)
 ## Read only mode
  ![](./doc/table-lecture.png?raw=true)
 
@@ -106,4 +109,4 @@ or
 > full text search 
  <br>![](./doc/fulltextSearch.png?raw=true)
 ----------
- [> LE DORNER François](https://www.francoisledorner.fr)
+ [> LE DORNER François](http://francoisledorner.fr)
