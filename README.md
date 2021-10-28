@@ -96,7 +96,7 @@ or
   
 ----------
 
-## Component - Fixed 
+## Component - pagination
 > pagination
  <br>![](./doc/pagination.png?raw=true)
  
