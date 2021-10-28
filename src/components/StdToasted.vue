@@ -24,7 +24,7 @@ export default class CasSecuComponent extends Vue {
 
   @Watch('text')
   updateClass() {
-    console.log('--text--')
+    //console.log('--text--')
     this.start = true
     this.end = false
     setTimeout(() => {

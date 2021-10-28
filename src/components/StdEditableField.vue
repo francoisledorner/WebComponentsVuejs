@@ -1,18 +1,30 @@
 <template>
-  <div class="flex-row" v-if="paramElement">
+  <div :class="{ 'flex-row': true, fJcenter: type === 'date', fJend: type !== 'date', ...classContainerObject }" v-if="paramElement">
     <div v-if="type === 'string'">
       <div v-if="currentEditable === false">
         {{ currentElementValue }}
       </div>
       <div v-else-if="currentEditable === true">
         <input v-model="currentElementValue" @blur="onBlur" />
-        <!--maxlength="..." size="..."  formatter-->
+        <!--maxlength="..." size="..."  formatter validator-->
       </div>
     </div>
+
+    <div v-if="type === 'number'">
+      <div v-if="currentEditable === false">
+        {{ currentElementValue | numberFilter }}
+      </div>
+      <div v-else-if="currentEditable === true">
+        <input class="numberClass" v-model="currentElementValueStringify" @blur="onBlur" />
+        <!--maxlength="..." size="..."  formatter validator-->
+      </div>
+    </div>
+
     <div v-if="type === 'date'">
       <div v-if="currentEditable === false">{{ currentElementValue | datefilter }}</div>
       <div v-else><date-picker v-model="currentElementValue" format="DD-MM-YYYY"></date-picker></div>
     </div>
+
     <div v-if="type === 'KeyValueCheckableModel'">
       <div v-if="currentEditable === false">
         {{ currentElementValue }}
@@ -21,6 +33,7 @@
         <select v-model="selectedValidValue" @blur="onBlur">
           <option v-for="option in validValues" :key="option.codei" :value="option.codei">
             {{ option.libelle }}
+            <!-- validator -->
           </option>
         </select>
       </div>
@@ -28,8 +41,11 @@
   </div>
 </template>
 <script lang="ts">
+import numeral from 'numeral'
 import { Vue, Prop, Emit, Watch, Component, PropSync } from 'vue-property-decorator'
 import KeyValueCheckableModel from '@/api/KeyValueCheckableModel'
+
+let timeout: any = undefined
 
 @Component({
   components: {}
@@ -45,6 +61,13 @@ export default class StfEditableField extends Vue {
     }
   })
   paramEditable!: boolean
+  @PropSync('classContainer', {
+    type: String,
+    default: () => {
+      return undefined
+    }
+  })
+  classContainerParam!: string
 
   @PropSync('validValues', {
     type: Array,
@@ -53,6 +76,30 @@ export default class StfEditableField extends Vue {
     }
   })
   paramValidValues!: []
+
+  // just to store for convertion
+  get currentElementValueStringify() {
+    return this.paramElement[this.paramField] != null ? numeral(this.paramElement[this.paramField]).format() : ''
+  }
+
+  set currentElementValueStringify(value: string) {
+    if (timeout) {
+      clearTimeout(timeout)
+      timeout = undefined
+    }
+    timeout = setTimeout(() => {
+      console.log('setTimeout')
+      this.currentElementValue = numeral(value)
+    }, 1000)
+  }
+
+  get classContainerObject() {
+    const x = {} as any
+    if (this.classContainerParam) {
+      x[this.classContainerParam] = true
+    }
+    return x
+  }
 
   onBlur() {
     this.$emit('onBlur')
@@ -89,4 +136,8 @@ export default class StfEditableField extends Vue {
 
 <style lang="scss">
 @import '@/styles/std-flex.scss';
+
+.numberClass {
+  text-align: right;
+}
 </style>

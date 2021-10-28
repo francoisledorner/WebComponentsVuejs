@@ -72,7 +72,7 @@ export default class SearchHelper {
   }
 
   public isRowFiltered(allCheckedCodei: string[], allNotCheckedCodei: string[], row: any, keyOfRow: string): boolean {
-    console.log(' ' + allCheckedCodei.length + ' ' + allNotCheckedCodei.length)
+    //console.log(' ' + allCheckedCodei.length + ' ' + allNotCheckedCodei.length)
     //return allNotCheckedCodei.findIndex(e => e === row[keyOfRow]) > -1 && allCheckedCodei.findIndex(e => e === row[keyOfRow]) == -1
     return allNotCheckedCodei.findIndex(e => e === row[keyOfRow]) == -1 && allCheckedCodei.findIndex(e => e === row[keyOfRow]) > -1
   }
@@ -109,7 +109,7 @@ export default class SearchHelper {
           } as KeyValueCheckableModel)
       )
 
-    console.log('result' + JSON.stringify(result))
+    //console.log('result' + JSON.stringify(result))
     return result
   }
 
@@ -118,12 +118,11 @@ export default class SearchHelper {
   }
 
   public spliceWithValidator(coll: [], valid: (value: Object) => boolean) {
-    for (let i = 0; i < coll.length; i++) {
-      let currentObject = coll[i]
-      if (valid(currentObject) === false) {
-        coll.splice(i, 1)
-      }
-    }
+    let rowIndexToSplice = coll.filter((currentObject: any) => !valid(currentObject))
+
+    rowIndexToSplice.forEach(element => {
+      coll.splice(coll.indexOf(element), 1)
+    })
   }
 
   public match(obj: any, filter: String): boolean {

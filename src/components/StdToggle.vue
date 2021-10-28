@@ -58,7 +58,7 @@ export default {
 
   watch: {
     checkModel() {
-      console.log('watch', this.checkModel)
+      //console.log('watch', this.checkModel)
       this.checkedOne = this.checkModel
       this.applyCSS()
     }
@@ -74,7 +74,7 @@ export default {
         return this.check
       },
       set(value) {
-        console.log('->>>>>', value)
+        //console.log('->>>>>', value)
         let inverse = this.init ? value : !value
         this.$emit('update:check', value)
 

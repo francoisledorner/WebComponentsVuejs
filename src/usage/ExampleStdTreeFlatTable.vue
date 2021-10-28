@@ -140,13 +140,13 @@ export default {
       this.characters = characters_1
     },
     rowSelected(item) {
-      console.log('rowSelected : ' + item)
+      //console.log('rowSelected : ' + item)
     },
     toggleFullScreen(fullscreen) {
-      console.log('toggleFullScreen : ' + fullscreen)
+      //console.log('toggleFullScreen : ' + fullscreen)
     },
     navigate(currentPage, offset) {
-      console.log('navigate currentPage : ' + currentPage + ' ; offset : ' + offset)
+      //console.log('navigate currentPage : ' + currentPage + ' ; offset : ' + offset)
     }
   }
 }

@@ -67,11 +67,11 @@ export default class StfFilterComponent extends Vue {
 
   @Watch('elements')
   updateClass() {
-    console.log('--prop elements changed --')
+    //console.log('--prop elements changed --')
   }
 
   elementChanged() {
-    console.log('--inside elements changed --')
+    //console.log('--inside elements changed --')
     this.$emit('elementChanged')
     this.$emit('update:elements', this.paramElements)
   }

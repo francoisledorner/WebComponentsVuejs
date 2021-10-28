@@ -17,6 +17,44 @@ Vue.filter('datefilter', (value: Date) => {
   return format(value, 'dd/MM/yyyy')
 })
 /***** fin date*/
+/*
+ if ((typeof this.paramElement[this.paramField] as any) === Number) {
+   return Number(this.paramElement[this.paramField])
+     .toString()
+     .replaceAll('/.', ',')
+ } else {
+   return this.paramElement[this.paramField]
+ }
+ */
+import numeral from 'numeral'
+
+//0.0[,]00
+numeral.defaultFormat('0.0,')
+numeral.register('locale', 'fr', {
+  delimiters: {
+    thousands: '.',
+    decimal: ','
+  },
+  abbreviations: {
+    thousand: 'k',
+    million: 'm',
+    billion: 'b',
+    trillion: 't'
+  },
+  ordinal: function(number: number) {
+    return number === 1 ? 'er' : 'ème'
+  },
+  currency: {
+    symbol: '€'
+  }
+})
+
+// switch between locales
+numeral.locale('fr')
+
+Vue.filter('numberFilter', (value: string) => {
+  return numeral(value).format()
+})
 
 //https://github.com/talk-to/vue-components
 //https://medium.com/justfrontendthings/how-to-create-and-publish-your-own-vuejs-component-library-on-npm-using-vue-cli-28e60943eed3

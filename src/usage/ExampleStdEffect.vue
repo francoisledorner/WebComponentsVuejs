@@ -140,13 +140,13 @@ export default {
   },
   methods: {
     toggleExpand(expand) {
-      console.log(expand)
+      //console.log(expand)
     },
     moreToolTip(moreToolTipData) {
-      console.log(JSON.stringify(moreToolTipData))
+      //console.log(JSON.stringify(moreToolTipData))
     },
     echoClick() {
-      console.log('echoClick', this.checkToggle)
+      //console.log('echoClick', this.checkToggle)
     },
     initElementsToFilter() {
       let e = new KeyValueCheckableModel({ codei: 'code1', libelle: 'libelle1' })
