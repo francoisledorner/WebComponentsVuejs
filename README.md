@@ -1,7 +1,7 @@
-# Reusable web components in VUE JS 
+# Reusable web components in VUE JS - Webcomponent-`DL` Webcomponent-`Delight` 
 
 # Install
-> You can get the project and run `yarn install` , a demo page will run
+> You can checkout the project and get dependencies with `yarn`, a demo page will run with `yarn serve`
 
 or
 
