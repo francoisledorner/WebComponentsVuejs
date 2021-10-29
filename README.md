@@ -10,7 +10,7 @@ or
 ![](doc/use-as-component.png)
 
 # Table with header 
-## Exemple with simple model
+## Example with simple model
 ![](starwarsmodel.png)
 ## Read only mode
  ![](./doc/table-lecture.png?raw=true)
