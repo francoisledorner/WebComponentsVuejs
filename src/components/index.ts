@@ -17,6 +17,7 @@ import StdToggle from '@/components/StdToggle.vue'
 import StdSpinner from '@/components/StdSpinner.vue'
 import StdButton from '@/components/StdButton.vue'
 import StdToasted from '@/components/StdToasted.vue'
+import StdEditableField from '@/components/StdEditableField.vue'
 
 export {
   StdFullscreenButton,
@@ -37,5 +38,6 @@ export {
   StdToggle,
   StdSpinner,
   StdButton,
-  StdToasted
+  StdToasted,
+  StdEditableField
 }
