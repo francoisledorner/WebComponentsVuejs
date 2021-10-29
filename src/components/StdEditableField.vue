@@ -50,7 +50,7 @@ let timeout: any = undefined
 @Component({
   components: {}
 })
-export default class StfEditableField extends Vue {
+export default class StdEditableField extends Vue {
   @PropSync('element', { type: Object }) paramElement!: any
   @PropSync('field', { type: String }) paramField!: string
   @PropSync('type', { type: String }) paramType!: any

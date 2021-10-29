@@ -7,6 +7,7 @@
     @toggleFullScreen="toggleFullScreen"
     @toggleEditable="toggleEditable"
     @navigate="navigate"
+    class="samewidth"
   >
     <template v-slot:header-titles>
       <span class="std-flex-item">Personnages de StarWars</span>
@@ -26,9 +27,9 @@
       </th>
     </template>
     <template v-slot:table_cells="item">
-      <td><StfEditableField :element.sync="item.row" :field="'firstName'" :type="'string'" :editable="editable" /></td>
+      <td><StdEditableField :element.sync="item.row" :field="'firstName'" :type="'string'" :editable="editable" /></td>
       <td>
-        <StfEditableField
+        <StdEditableField
           :classContainer="'boldThings'"
           :element.sync="item.row"
           :field="'name'"
@@ -38,16 +39,16 @@
           @validator="customValidator"
         />
       </td>
-      <td><StfEditableField :element.sync="item.row" :field="'score'" :type="'number'" :editable="editable" /></td>
-      <td><StfEditableField :element.sync="item.row" :field="'job'" :type="'KeyValueCheckableModel'" :validValues="distinctJobs" :editable="editable" /></td>
-      <td><StfEditableField :element.sync="item.row" :field="'birthday'" :type="'date'" :editable="editable" /></td>
+      <td><StdEditableField :element.sync="item.row" :field="'score'" :type="'number'" :editable="editable" /></td>
+      <td><StdEditableField :element.sync="item.row" :field="'job'" :type="'KeyValueCheckableModel'" :validValues="distinctJobs" :editable="editable" /></td>
+      <td><StdEditableField :element.sync="item.row" :field="'birthday'" :type="'date'" :editable="editable" /></td>
     </template>
   </StdTable>
 </template>
 <script>
 import StdTable from '@/components/StdTable.vue'
 import StdFilter from '@/components/StdFilter.vue'
-import StfEditableField from '@/components/StdEditableField.vue'
+import StdEditableField from '@/components/StdEditableField.vue'
 
 import { SearchService } from '@/api/SearchHelper'
 
@@ -60,7 +61,7 @@ const characters_1 = [
 ]
 
 export default {
-  components: { StdTable, StdFilter, StfEditableField },
+  components: { StdTable, StdFilter, StdEditableField },
   data() {
     return {
       characters: [],
@@ -129,10 +130,14 @@ export default {
   }
 }
 </script>
+
 <style lang="scss">
 @import '@/styles/std-flex.scss';
 
 .boldThings {
   font-weight: bold;
+}
+.samewidth th {
+  width: 20%;
 }
 </style>
