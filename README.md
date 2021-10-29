@@ -1,5 +1,44 @@
 # Reusable web components in VUE JS - Webcomponent-`DL` Webcomponent-`Delight` 
 
+# Live demo
+[All in one components live demo ]([https://link](https://guardian-angels-for-riders.com/demovuejs/))
+
+# Final Use Cases
+
+> Treetable with differents types of axis (aggregates CA, % CA...)
+> <br>
+![](https://github.com/francoisledorner/WebComponentsVuejs/blob/main/doc/jvc.png?raw=true)
+
+> Partial editable Flat with Treetable aspect
+> <br>
+![](https://github.com/francoisledorner/WebComponentsVuejs/blob/main/doc/justifvariantes.png?raw=true)
+
+>... so many others
+
+# UX Design - bases - FR
+
+> UX se décline en trois étapes : Analyse, Conception et Évaluation.
+User Research = Observer, interviewer, analyser le comportement des véritables utilisateurs du produit, comprendre le besoin
+
+> L’étape de conception: définition des interfaces de l’expérience digitale (UX/UI Design). = maquette des solutions pour répondre aux attentes des utilisateurs. Ce sont des hypothèses de conception à vérifier auprès des véritables utilisateurs. 
+
+> L‘étape de l’évaluation des interfaces, généralement, un test utilisateur qui permet de valider concrètement auprès des véritables utilisateurs du produit les hypothèses de la seconde étape.
+
+> UX est une démarche scientifique, s’appuyant sur les travaux en ergonomie, psychologie cognitive et psychologie expérimentale
+
+# UI - bases
+
+> Colors 
+> <br>
+![](https://github.com/francoisledorner/WebComponentsVuejs/blob/main/doc/styles-scss.png?raw=true)
+
+> blue
+![](https://github.com/francoisledorner/WebComponentsVuejs/blob/main/doc/styles-blue.png?raw=true)
+
+> pink..
+
+> others UI aspects ...
+
 # Install
 > You can checkout the project and get dependencies with `yarn`, a demo page will run with `yarn serve`
 
