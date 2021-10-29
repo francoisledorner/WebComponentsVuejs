@@ -2,6 +2,7 @@
 
 # Live demo
 [All in one components live demo ]([https://link](https://guardian-angels-for-riders.com/demovuejs/))
+https://guardian-angels-for-riders.com/demovuejs/
 
 # Final Use Cases
 
