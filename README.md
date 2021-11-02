@@ -4,7 +4,7 @@
  ---
  I know Vuetify from having used it several times and its use does not prove that we know Vue.js,
  Worse, the monitoring of migrations is heavy and painful especially in CSS and it becomes very expensive to follow the versions.
- As much mastering its own components makes basic languages that do not obsolete, that's my point of view.
+ As much mastering its own components makes basic languages and follow them, that's my point of view.
  However, it is very difficult to do something flawless in such a short time.
  ---
 
