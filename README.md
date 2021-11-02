@@ -2,8 +2,8 @@
 
 >NB: a lot of dirt code, I'm sorry a do not have engough timeto make it better !
  ---
- I know Vuetify,Quasar,Element-UI,Vue-Material from having used it several times and its use does not prove that we know Vue.js,
- Worse, the monitoring of migrations is heavy and painful especially in CSS (always hack for overriding) and it becomes very expensive to follow the versions.
+ I know Vuetify,Quasar,Element-UI,Vue-Material from having used it several times and its use does not prove that we know Vue.js.
+ Worse, the monitoring of migrations is heavy and painful especially in CSS since we need to hack for overriding in order to integrate in something existing. So it becomes very expensive to follow the versions.
  As much mastering its own components makes basic languages and follow them, that's my point of view.
  However, it is very difficult to do something flawless in such a short time.
  ---
