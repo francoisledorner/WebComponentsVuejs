@@ -1,5 +1,7 @@
 # Reusable web components in VUE JS - Webcomponent-`DL` Webcomponent-`Delight` 
 
+'NB: a lot of dirt code, I'm sorry a do not have engough timeto make it better !'
+
 # Live demo
 [All in one components live demo ]([https://link](https://guardian-angels-for-riders.com/demovuejs/))
 https://guardian-angels-for-riders.com/demovuejs/
