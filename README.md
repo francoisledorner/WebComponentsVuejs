@@ -1,6 +1,12 @@
 # Reusable web components in VUE JS - Webcomponent-`DL` Webcomponent-`Delight` 
 
-'NB: a lot of dirt code, I'm sorry a do not have engough timeto make it better !'
+>NB: a lot of dirt code, I'm sorry a do not have engough timeto make it better !
+ ---
+ I know Vuetify from having used it several times and its use does not prove that we know Vue.js,
+ Worse, the monitoring of migrations is heavy and painful especially in CSS and it becomes very expensive to follow the versions.
+ As much mastering its own components makes basic languages that do not obsolete, that's my point of view.
+ However, it is very difficult to do something flawless in such a short time.
+ ---
 
 # Live demo
 [All in one components live demo ]([https://link](https://guardian-angels-for-riders.com/demovuejs/))
