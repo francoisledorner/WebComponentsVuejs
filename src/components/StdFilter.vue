@@ -1,29 +1,27 @@
 <template>
   <div class="flex-row-fJaround">
-    <div class="flex-col">
-      <StdTooltip
-        :tooltiptextAbsolute="false"
-        :iconPlusInfo="novalue"
-        :iconClose="novalue"
-        :tooltiptextStyle="'min-width:10rem;'"
-        :tooltipcontentStyle="'min-height:5rem;'"
-        :iconTooltip="StdIconStyle.search"
-      >
-        <template v-slot:tooltipcontent>
-          <span v-if="paramType === 'KeyValueCheckableModel'">
-            <div class="flex-fAstart-fJbetween" v-for="e of currentElements" :key="e.codei">
-              <StdToggle :check.sync="e.checked" @click="elementChanged" checkedString="oui" uncheckedString="non" :disable="!e.checkAble" />
-              <div>{{ e.presentation() }}</div>
-            </div>
-          </span>
-          <span v-if="paramType === 'date'">
-            <div class="flex-fAstart-fJbetween" v-for="(e, index) of currentElements" :key="`${index}${e}`">
-              <date-picker v-model="currentElements[index]" format="DD-MM-YYYY"></date-picker>
-            </div>
-          </span>
-        </template>
-      </StdTooltip>
-    </div>
+    <StdTooltip
+      :tooltiptextAbsolute="false"
+      :iconPlusInfo="novalue"
+      :iconClose="novalue"
+      :tooltiptextStyle="'min-width:10rem;'"
+      :tooltipcontentStyle="'min-height:5rem;'"
+      :iconTooltip="StdIconStyle.search"
+    >
+      <template v-slot:tooltipcontent>
+        <span v-if="paramType === 'KeyValueCheckableModel'">
+          <div class="flex-fAstart-fJbetween" v-for="e of currentElements" :key="e.codei">
+            <StdToggle :check.sync="e.checked" @click="elementChanged" checkedString="oui" uncheckedString="non" :disable="!e.checkAble" />
+            <div>{{ e.presentation() }}</div>
+          </div>
+        </span>
+        <span v-if="paramType === 'date'">
+          <div class="flex-fAstart-fJbetween" v-for="(e, index) of currentElements" :key="`${index}${e}`">
+            <date-picker v-model="currentElements[index]" format="DD-MM-YYYY"></date-picker>
+          </div>
+        </span>
+      </template>
+    </StdTooltip>
   </div>
 </template>
 <script lang="ts">
