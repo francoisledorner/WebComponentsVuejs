@@ -1,16 +1,17 @@
 <template>
   <div class="std-flex-container center heigth-bg">
-    <span class="std-flex-item discret">Lignes par page</span>
-    <select class="std-flex-item discret" v-model="offset">
-      <option value="10">10</option>
-      <option value="20">20</option>
-      <option value="30">30</option>
-      <option value="40">40</option>
-      <option value="50">50</option>
-      <option value="all">Tout</option>
+    <span v-if="showLignes" class="std-flex-item discret">Lignes par page</span>
+    <select v-if="showLignes" class="std-flex-item discret" v-model="pagination.limit">
+      <option :value="5">5</option>
+      <option :value="10">10</option>
+      <option :value="30">30</option>
+      <option :value="40">40</option>
+      <option :value="50">50</option>
+      <option :value="9999">Tout</option>
     </select>
 
-    <span class="std-flex-item push-right discret">Lignes {{ start }}-{{ end }} sur {{ rowCount }}</span>
+    <span  v-if="showLignes" class="std-flex-item push-right discret">Lignes {{ start }}-{{ end }} sur {{ rowCount }}</span>
+
     <i :class="computedClass" @click="navigateFirst" :disabled="disabledPrevious">{{ iconNavFirst }}</i>
     <i :class="computedClass" @click="navigatePrevious" :disabled="disabledPrevious">{{ iconNavPrevious }}</i>
     <i :class="computedClass" @click="navigateNext" :disabled="disabledNext">{{ iconNavNext }}</i>
@@ -20,9 +21,24 @@
 
 <script>
 import StdIconStyle from '@/styles/std-icon.ts'
+import PageableAdvanceQuery from '@/api/PageableAdvanceQuery'
 
 export default {
   props: {
+    showLignes: {
+      type: Boolean,
+      expected: false,
+      default: true
+    },
+    pagination : {
+      type: PageableAdvanceQuery,
+      expected: false,
+      default: () => {
+        let p = new PageableAdvanceQuery()
+        p.resetPagination()
+        return p
+        }
+    },   
     classIcon: {
       type: String,
       expected: false,
@@ -49,50 +65,56 @@ export default {
       default: () => StdIconStyle.iconNavLast
     }
   },
-  data: () => ({
-    offset: 10,
-    currentPage: 1,
-    rowCount: 46
-  }),
+  data: () => ({}),
   methods: {
     navigateFirst() {
-      this.currentPage = 1
+      this.pagination.current = 1
+      this.emitNavigate()
     },
     navigatePrevious() {
-      this.currentPage -= 1
+      this.pagination.current -= 1
+      this.emitNavigate()
     },
     navigateNext() {
-      this.currentPage += 1
+      this.pagination.current += 1
+      this.emitNavigate()
     },
     navigateLast() {
-      this.currentPage = this.maxPage()
+      this.pagination.current = this.maxPage()
+      this.emitNavigate()
     },
     maxPage() {
-      if (this.offset === 'all') {
+      if (this.pagination.limit === 9999) {
         return 1
       }
-      return Math.ceil(this.rowCount / this.offset)
+      return Math.ceil(this.pagination.count / this.pagination.limit)
+    },
+
+    emitNavigate(){
+        this.$emit('navigate', this.pagination.current, this.pagination.offset)
     }
   },
   computed: {
     start() {
-      if (this.offset === 'all') {
+      if (this.pagination.limit === 9999) {
         return 1
       }
-      return this.currentPage * this.offset - this.offset + 1
+      return this.pagination.current * this.pagination.limit - this.pagination.limit + 1
     },
     end() {
-      if (this.offset === 'all') {
-        return this.rowCount
+      if (this.pagination.limit === 9999) {
+        return this.pagination.count
       }
-      return Math.min(this.currentPage * this.offset, this.rowCount)
+      return this.pagination.current * this.pagination.limit
     },
-
+    rowCount(){
+      return this.maxPage()
+    },
     disabledPrevious() {
-      return this.currentPage == 1
+      return this.pagination.current == 1
     },
     disabledNext() {
-      return this.currentPage == this.maxPage()
+      return this.pagination.current == this.maxPage()
     },
     computedClass() {
       return 'std-flex-item navigation-button ' + this.classIcon
@@ -101,15 +123,8 @@ export default {
 
   watch: {
     offset() {
-      let old = this.currentPage
-      this.currentPage = 1
-      if (old == this.currentPage) {
-        this.$emit('navigate', this.currentPage, this.offset)
-      }
-    },
-    currentPage() {
-      this.$emit('navigate', this.currentPage, this.offset)
-    }
+      this.$emit('navigate', this.pagination.current, this.pagination.offset)
+    } 
   }
 }
 </script>

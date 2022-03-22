@@ -17,6 +17,11 @@
     <div class="container">
       <ExampleStdEffect></ExampleStdEffect>
     </div>
+    <h2>Les cards :</h2>
+    <div class="container">
+      <ExampleStdCards></ExampleStdCards>
+    </div>
+    
   </div>
 </template>
 
@@ -27,6 +32,7 @@ import ExempleStdTreeTable from '@/usage/ExempleStdTreeTable.vue'
 import ExempleStdTable from '@/usage/ExempleStdTable.vue'
 import ExampleStdEffect from '@/usage/ExampleStdEffect.vue'
 import ExampleStdTreeFlatTable from '@/usage/ExampleStdTreeFlatTable.vue'
+import ExampleStdCards from '@/usage/ExampleStdCards.vue'
 
 export default Vue.extend({
   name: 'app',
@@ -35,7 +41,8 @@ export default Vue.extend({
     ExempleStdTreeTable,
     ExempleStdTable,
     ExampleStdEffect,
-    ExampleStdTreeFlatTable
+    ExampleStdTreeFlatTable,
+    ExampleStdCards
   }
 })
 </script>

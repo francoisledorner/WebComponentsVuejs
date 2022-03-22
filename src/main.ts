@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import './registerServiceWorker'
-
-/***** debug date*/
+  /***** debug date*/
 import { format, formatDistance, formatRelative, subDays } from 'date-fns'
 import fr from 'date-fns/locale/fr'
 //@ts-ignore

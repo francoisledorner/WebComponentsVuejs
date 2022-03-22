@@ -1,11 +1,21 @@
 <template>
-  <div :class="{ 'flex-row': true, fJcenter: type === 'date', fJend: type !== 'date', ...classContainerObject }" v-if="paramElement">
+  <div :class="{ 'flex-row': true, fJcenter: type === 'date', fJend: ((classContainerParam !=null && classContainerParam.indexOf('fJ') == -1) && type !== 'date'), ...classContainerObject }" v-if="paramElement">
     <div v-if="type === 'string'">
       <div v-if="currentEditable === false">
         {{ currentElementValue }}
       </div>
       <div v-else-if="currentEditable === true">
-        <input v-model="currentElementValue" @blur="onBlur" />
+        <input v-model="currentElementValue" @blur="onBlur" :placeholder="currentPlaceholder" />
+        <!--maxlength="..." size="..."  formatter validator-->
+      </div>
+    </div>
+
+    <div v-if="type === 'textarea'">
+      <div v-if="currentEditable === false">
+        <pre>{{ currentElementValue }}</pre>
+      </div>
+      <div v-else-if="currentEditable === true">
+        <textarea v-if="type === 'textarea'" v-model="currentElementValue" @blur="onBlur" :placeholder="currentPlaceholder" rows="10" cols="35" />
         <!--maxlength="..." size="..."  formatter validator-->
       </div>
     </div>
@@ -15,7 +25,7 @@
         {{ currentElementValue | numberFilter }}
       </div>
       <div v-else-if="currentEditable === true">
-        <input class="numberClass" v-model="currentElementValueStringify" @blur="onBlur" />
+        <input class="numberClass" v-model="currentElementValueStringify" @blur="onBlur" :placeholder="currentPlaceholder" />
         <!--maxlength="..." size="..."  formatter validator-->
       </div>
     </div>
@@ -61,6 +71,9 @@ export default class StdEditableField extends Vue {
     }
   })
   paramEditable!: boolean
+
+  @PropSync('placeHolder', { type: String }) paramPlaceholder!: string
+
   @PropSync('classContainer', {
     type: String,
     default: () => {
@@ -76,6 +89,14 @@ export default class StdEditableField extends Vue {
     }
   })
   paramValidValues!: []
+
+  get currentElementValueFormatted() {
+    return this.currentElementValue.replaceAll('\n', '<br>')
+  }
+
+  set currentElementValueFormatted(val: string) {
+    this.currentElementValue = val.replaceAll('<br>', '\n')
+  }
 
   // just to store for convertion
   get currentElementValueStringify() {
@@ -130,6 +151,12 @@ export default class StdEditableField extends Vue {
 
   get selectedValidValue() {
     return this.paramElement[this.paramField]
+  }
+
+  get currentPlaceholder() {
+    if (this.currentElementValue == '') {
+      return this.paramPlaceholder
+    } else return ''
   }
 }
 </script>

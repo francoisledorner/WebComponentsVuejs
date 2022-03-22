@@ -22,6 +22,8 @@ import StdButton from '@/components/StdButton.vue'
 import StdToasted from '@/components/StdToasted.vue'
 import StdEditableField from '@/components/StdEditableField.vue'
 import StdFilter from '@/components/StdFilter.vue'
+import StdAutocomplete from '@/components/StdAutocomplete.vue'
+
 
 export {
   SearchHelper,
@@ -46,5 +48,6 @@ export {
   StdButton,
   StdToasted,
   StdEditableField,
-  StdFilter
+  StdFilter,
+  StdAutocomplete
 }

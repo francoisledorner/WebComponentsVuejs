@@ -1,8 +1,8 @@
 import SecurePojo from './SecurePojo'
 
 export default class PageableQuery extends SecurePojo {
-  private _offset: number | any = null
-  private _limit: number | any = null
+  protected _offset: number | any = null
+  protected _limit: number | any = null
 
   constructor() {
     super()
