@@ -13,11 +13,12 @@
     <div class="container">
       <ExampleStdTreeFlatTable></ExampleStdTreeFlatTable>
     </div>
+     
     <h2>Les effets :</h2>
     <div class="container">
       <ExampleStdEffect></ExampleStdEffect>
     </div>
-    <h2>Les cards :</h2>
+   <h2>Les cards :</h2>
     <div class="container">
       <ExampleStdCards></ExampleStdCards>
     </div>

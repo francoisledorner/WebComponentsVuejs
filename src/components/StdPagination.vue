@@ -10,7 +10,7 @@
       <option :value="9999">Tout</option>
     </select>
 
-    <span  v-if="showLignes" class="std-flex-item push-right discret">Lignes {{ start }}-{{ end }} sur {{ rowCount }}</span>
+    <span v-if="showLignes" class="std-flex-item push-right discret">Lignes {{ start }}-{{ end }} sur {{ rowCount }}</span>
 
     <i :class="computedClass" @click="navigateFirst" :disabled="disabledPrevious">{{ iconNavFirst }}</i>
     <i :class="computedClass" @click="navigatePrevious" :disabled="disabledPrevious">{{ iconNavPrevious }}</i>
@@ -30,15 +30,15 @@ export default {
       expected: false,
       default: true
     },
-    pagination : {
+    pagination: {
       type: PageableAdvanceQuery,
       expected: false,
       default: () => {
         let p = new PageableAdvanceQuery()
         p.resetPagination()
         return p
-        }
-    },   
+      }
+    },
     classIcon: {
       type: String,
       expected: false,
@@ -72,11 +72,11 @@ export default {
       this.emitNavigate()
     },
     navigatePrevious() {
-      this.pagination.current -= 1
+      this.pagination.previous()
       this.emitNavigate()
     },
     navigateNext() {
-      this.pagination.current += 1
+      this.pagination.next()
       this.emitNavigate()
     },
     navigateLast() {
@@ -90,8 +90,8 @@ export default {
       return Math.ceil(this.pagination.count / this.pagination.limit)
     },
 
-    emitNavigate(){
-        this.$emit('navigate', this.pagination.current, this.pagination.offset)
+    emitNavigate() {
+      this.$emit('navigate', this.pagination)
     }
   },
   computed: {
@@ -107,7 +107,7 @@ export default {
       }
       return this.pagination.current * this.pagination.limit
     },
-    rowCount(){
+    rowCount() {
       return this.maxPage()
     },
     disabledPrevious() {
@@ -124,7 +124,7 @@ export default {
   watch: {
     offset() {
       this.$emit('navigate', this.pagination.current, this.pagination.offset)
-    } 
+    }
   }
 }
 </script>

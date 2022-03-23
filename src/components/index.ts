@@ -2,8 +2,10 @@ import ItemWithChildrenDTO from '@/api/ItemWithChildrenDTO.ts'
 import KeyValueCheckableModel from '@/api/KeyValueCheckableModel.ts'
 import ItemWithChildrenDTOHelper from '@/api/ItemWithChildrenDTOHelper.ts'
 import PageableQuery from '@/api/PageableQuery.ts'
+import PageableAdvanceQuery from '@/api/PageableAdvanceQuery.ts'
 import SecurePojo from '@/api/SecurePojo.ts'
 import SearchHelper from '@/api/SearchHelper.ts'
+import FullTextQuery from '@/api/FullTextQuery.ts'
 
 import StdFullscreenButton from '@/components/StdFullscreenButton.vue'
 import StdSearchComponent from '@/components/StdSearchComponent.vue'
@@ -36,7 +38,9 @@ export {
   ItemWithChildrenDTO,
   ItemWithChildrenDTOHelper,
   KeyValueCheckableModel,
+  PageableAdvanceQuery,
   PageableQuery,
+  FullTextQuery,
   SecurePojo,
   StdPastille,
   StdPastilleStyle,

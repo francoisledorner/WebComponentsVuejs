@@ -67,6 +67,12 @@
     spinner : <br />
     <div><StdSpinner size="48" /><StdSpinner /></div>
     <hr />
+    <div>
+      AutoComplete :
+      <StdAutocomplete :results="itemsAutoComplete" @input="echoInputAutoComplete" :pagination="paginationAutoComplete" @navigate="paginationPage" />
+    </div>
+    <hr />
+    
     <div class="wrappedFixeHeader">
       table fixed header :
       <br />
@@ -109,11 +115,7 @@
     toasted : <br />
     <div><StdToasted :text="toasted"></StdToasted></div>
     <hr />
-    <div>
-      AutoComplete :
-      <StdAutocomplete :results="itemsAutoComplete" @input="echoInputAutoComplete" :pagination="paginationAutoComplete" @page="paginationPage"/>
-    </div>
-    <hr />
+    
   </div>
 </template>
 <script>
@@ -130,8 +132,8 @@ import StdSpinner from '@/components/StdSpinner.vue'
 import StdToggle from '@/components/StdToggle.vue'
 import StdToasted from '@/components/StdToasted.vue'
 import StdFilter from '@/components/StdFilter.vue'
-import StdAutocomplete from '@/components/StdAutocomplete.vue' 
- 
+import StdAutocomplete from '@/components/StdAutocomplete.vue'
+
 export default {
   components: { StdPastille, StdExpander, StdTooltip, StdButton, StdSpinner, StdToggle, StdToasted, StdFilter, StdAutocomplete },
   data() {
@@ -143,7 +145,7 @@ export default {
       toasted: '',
       elementsToFilter: [],
       novalue: '',
-      itemsAutoComplete:[],
+      itemsAutoComplete: [],
       paginationAutoComplete: new FullTextQuery()
     }
   },
@@ -164,24 +166,24 @@ export default {
       this.elementsToFilter.push(e)
     },
 
-    echoInputAutoComplete(search){
+    echoInputAutoComplete(search) {
       this.itemsAutoComplete = []
       let limit = this.paginationAutoComplete.limit
       let page = this.paginationAutoComplete.current
-      ;[...Array(limit)].forEach(() => { 
-        this.itemsAutoComplete.push( new KeyValueCheckableModel({id:'id'+search+"-"+page,codei:'codei'+search+"-"+page,libelle:'libelle'+search+"-"+page}) )
+      ;[...Array(limit)].forEach(() => {
+        this.itemsAutoComplete.push(
+          new KeyValueCheckableModel({ id: 'id' + '-' + page, codei: 'codei' + search, libelle: 'libelle-' + this.paginationAutoComplete.current })
+        )
       })
-
-       
-      //['Apple'+std, 'Banana'+std, 'Orange'+std, 'Mango'+std, 'Pear'+std, 'Peach'+std, 'Grape'+std, 'Tangerine'+std, 'Pineapple'+std]
     },
-    paginationPage(search){
-      this.echoInputAutoComplete(search)
+    paginationPage(pagination) {
+      this.itemsAutoComplete.forEach(x => {
+        x.libelle = 'libelle-' + this.paginationAutoComplete.current
+      })
     }
   },
   mounted() {
-
-    this.paginationAutoComplete.count = 100 
+    this.paginationAutoComplete.count = 100
 
     this.toasted = 'init'
     setInterval(() => {
