@@ -69,10 +69,14 @@
     <hr />
     <div>
       AutoComplete :
-      <StdAutocomplete :results="itemsAutoComplete" @input="echoInputAutoComplete" :pagination="paginationAutoComplete" @navigate="paginationPage" />
+      <StdAutocomplete :results="itemsAutoComplete" @input="echoInputAutoComplete" :pagination="paginationAutoComplete" @navigate="paginationPage" placeholder="fournisseur" >
+        <template v-slot:content="content">
+          <b>{{ content.row.codei}}</b> &nbsp;{{ content.row.libelle}}
+        </template>
+      </StdAutocomplete>
     </div>
     <hr />
-    
+
     <div class="wrappedFixeHeader">
       table fixed header :
       <br />
@@ -115,7 +119,6 @@
     toasted : <br />
     <div><StdToasted :text="toasted"></StdToasted></div>
     <hr />
-    
   </div>
 </template>
 <script>

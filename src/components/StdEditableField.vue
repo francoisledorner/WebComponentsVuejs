@@ -12,10 +12,10 @@
 
     <div v-if="type === 'textarea'">
       <div v-if="currentEditable === false">
-        <pre>{{ currentElementValue }}</pre>
+        <span v-html="currentElementValueFormatted"></span>
       </div>
       <div v-else-if="currentEditable === true">
-        <textarea v-if="type === 'textarea'" v-model="currentElementValue" @blur="onBlur" :placeholder="currentPlaceholder" rows="10" cols="35" />
+        <textarea   v-model="currentElementValueFormatted" @blur="onBlur" :placeholder="currentPlaceholder" rows="10" cols="35" />
         <!--maxlength="..." size="..."  formatter validator-->
       </div>
     </div>
